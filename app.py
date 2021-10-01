@@ -13,6 +13,10 @@ def server_static(filename):
 def index():
     return template("index")
 
+@get('/sign_up')
+def s_u():
+    return template("sign-up")
+
 @post('/validator')
 def validator():
     username = request.forms["username"]
@@ -48,6 +52,30 @@ def register():
         return template("rolled")
     else:
         return "reg fail"  + "<a href='/'>home</a>"
+@get("/sign_up_form")
+def send_signup_form():
+    return '''
+    <!-- Tabs Titles -->
+          <h2 class="active"> Sign In </h2>
+          <h2 class="inactive underlineHover" ><a href="/sign_up">Sign Up</a> </h2>
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6QTESaLQXNJDpokdt6XZd3CmvIevt1VKmGQ&usqp=CAU" id="icon" alt="User Icon" />
+          </div>
+      
+          <!-- Login Form -->
+          <form action="/validator" method = "POST">
+            <input type="text" id="login" class="fadeIn second" name="username" placeholder="login">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+          </form>
+      
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+          </div>
+    '''
 
 @get('/all')
 def show_all_users():
