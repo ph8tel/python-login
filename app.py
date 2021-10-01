@@ -49,7 +49,7 @@ def register():
     db.register(username,pwd)
     print("registering", username, pwd, db.validate(username,pwd))
     if db.validate(username,pwd) is not None:
-        return template("rolled")
+        return template("dynamic")
     else:
         return "reg fail"  + "<a href='/'>home</a>"
 @get("/sign_up_form")
